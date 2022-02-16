@@ -92,7 +92,7 @@ export class MatchPage implements OnInit {
 
     setInterval(() => {
       this.getMatchData();
-    }, 50);
+    }, 100);
 
     setInterval(() => {
       //this.ballMoving();
@@ -148,8 +148,6 @@ export class MatchPage implements OnInit {
       } = (await this.apiService.getMatch(this.matchId)) as any;
 
       this.isPlayer1 = player1 === this.userData.userId ? true : false;
-
-      //console.log(this.isPlayer1);
 
       if (this.isPlayer1) {
         this.player2Position = player2Position;
@@ -275,7 +273,8 @@ export class MatchPage implements OnInit {
   onMousedown(event: MouseEvent) {
     this.mouseDown = true;
 
-    this.player1Position = event.pageX;
+    this.player1Position =
+      event.pageX - (window.innerWidth - this.windowWidth) / 2 - 50;
 
     this.movePlayer(this.player1Position);
   }
