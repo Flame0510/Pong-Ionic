@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,128 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.container-full-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+}
+
+.container-full-flex-beetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  overflow-y: auto;
+}
+
+.container-full {
+  width: 100%;
+  height: 100%;
+
+  overflow-y: auto;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.scroll {
+  overflow-y: auto;
+}
+
+.container-100 {
+  width: 100%;
+  height: 100%;
+
+  padding: 20px;
+
+  overflow-y: auto;
+}
+
+form,
+.modal-form {
+  width: 80%;
+
+  input {
+    width: 100%;
+    margin-bottom: 20px;
+
+    color: #fff;
+    background: none;
+
+    outline: none;
+
+    padding: 10px;
+
+    border: none;
+    border-bottom: 1px solid #fff;
+    border-radius: 0;
+  }
+
+  ::placeholder {
+    color: #fff;
+    opacity: 0.5;
+  }
+}
+
+.dark {
+  color: #fff !important;
+  background: #1c1c1c !important;
+}
+
+.dark-bg {
+  color: #fff;
+  background: #000;
+}
+
+.light {
+  color: #000;
+  background: #fff;
+}
+
+.gradient {
+  background: linear-gradient(lighten(red, 20%), lighten(blue, 20%));
+}
+
+.red {
+  color: #fff;
+  background: red;
+}
+
+.full-btn {
+  width: 100%;
+  padding: 12px;
+  outline: none;
+}
+
+.radius {
+  border-radius: 4px;
+}
+
+.sign-in-up-page-switch-container {
+  width: 80%;
+  margin-top: 40px;
+  text-align: center;
+}
+
+#bottom-btn {
+  margin: 0;
+  padding: 16px;
+}

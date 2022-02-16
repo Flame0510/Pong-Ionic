@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  //apiLink: `http://192.168.1.50:3000`,
+  apiLink: `https://pong-express-server.herokuapp.com`,
 };
 
 /*

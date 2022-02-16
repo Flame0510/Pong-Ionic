@@ -1,5 +1,7 @@
 {
   "name": "Pong-Ionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

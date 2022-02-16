@@ -1,9 +1,35 @@
 <div class="container">
-  <span class="player" id="player1" #player1></span>
-  <span class="ball" #ball></span>
-  <span class="player" id="player2" #player2></span>
+  <div class="menu">
+    <ion-icon
+      name="play"
+      color="light"
+      id="play-btn"
+      (click)="play()"
+    ></ion-icon>
+    <ion-icon
+      name="pause"
+      color="light"
+      id="pause-btn"
+      (click)="pause()"
+    ></ion-icon>
+    <ion-icon
+      name="home"
+      color="light"
+      id="login-btn"
+      (click)="logout()"
+    ></ion-icon>
+  </div>
 
-  <div class="center-text">
-    <span>X:{{ballPosition.x}} - Y: {{ballPosition.y}}</span>
+  <div class="playground">
+    <span class="player" id="player1" #player1></span>
+    <span class="ball" #ball></span>
+    <span class="player" id="player2" #player2></span>
+
+    <div class="center-text">
+      <span *ngIf="userData">{{userData.username}}</span>
+      <span>X:{{ballPosition.x}} - Y: {{ballPosition.y}}</span>
+      <span>1:{{player1Position}} - 2: {{player2Position}}</span>
+      <span>1:{{player1ServerPosition}}</span>
+    </div>
   </div>
 </div>
