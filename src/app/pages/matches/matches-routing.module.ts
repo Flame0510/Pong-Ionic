@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MatchPage } from './match.page';
+import { MatchesPage } from './matches.page';
 
 const routes: Routes = [
   {
-    path: '/:id',
-    component: MatchPage,
-  },
+    path: '',
+    component: MatchesPage
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MatchPageRoutingModule {}
+export class MatchesPageRoutingModule {}

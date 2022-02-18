@@ -1,27 +1,58 @@
 <ion-header>
-  <ion-toolbar color="dark">
+  <ion-toolbar color="light">
     <ion-icon
       slot="start"
       name="chevron-back-outline"
-      (click)="router.navigate(['feed'])"
+      (click)="router.navigate(['matches'])"
     ></ion-icon>
     <ion-title>Account</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<div class="container-full dark" *ngIf="account">
+<!-- <div
+  class="container-full-flex-center settings-header-container light"
+  *ngIf="account"
+>
+  <h2 id="title">Hello <span>{{account.username}}</span></h2>
+</div> -->
+
+<div class="settings-container container-full light" *ngIf="account">
   <item-list>
-    <div class="dark">
-      <p id="key">ID:</p>
-      <p>{{account.id}}</p>
-    </div>
-    <div class="dark">
-      <p id="key">Nickname:</p>
-      <p>{{account.nickname}}</p>
-    </div>
+    <ion-item-divider>
+      <h2 id="title">Hello <span>{{account.username}}</span></h2>
+    </ion-item-divider>
+    <ion-item>
+      <div>
+        <p id="key">ID:</p>
+        <p>{{account.id}}</p>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div>
+        <p id="key">Nickname:</p>
+        <p>{{account.username}}</p>
+      </div>
+    </ion-item>
+
+    <ion-item *ngIf="session">
+      <div>
+        <p id="key">Session ID:</p>
+        <p>{{session.id}}</p>
+      </div>
+    </ion-item>
+
+    <!-- <ion-item>
+      <div>
+        <p id="key">Token:</p>
+        <p>{{token}}</p>
+      </div>
+    </ion-item> -->
+
+    <!-- <ion-item button color="danger" (click)="logoutActionSheet()">
+      Logout
+    </ion-item> -->
   </item-list>
 </div>
 
-<button class="logout-btn" id="bottom-btn" (click)="logoutActionSheet()">
-  Logout
-</button>
+<ion-item button color="danger" (click)="logoutActionSheet()">Logout</ion-item>

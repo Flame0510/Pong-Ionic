@@ -1,0 +1,17 @@
+ion-toolbar {
+  ion-icon {
+    margin-right: 10px;
+  }
+}
+
+.matches-container {
+  .match {
+    background: none;
+
+    p {
+      span {
+        color: darken(#fff, 50%);
+      }
+    }
+  }
+}

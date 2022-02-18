@@ -1,27 +1,45 @@
-
 ion-toolbar {
-    ion-icon {
-      margin-left: 20px;
-    }
+  ion-icon {
+    margin-left: 10px;
   }
-  
+}
+
+#title {
+  margin: 0;
+
+  padding: 16px;
+
+  span {
+    color: red;
+  }
+}
+
+.settings-header-container {
+  background: lighten(gray, 40%);
+}
+
+.settings-container {
   item-list {
     div {
-      padding: 12px;
-      border-bottom: 1px solid gray;
-  
+      width: 100%;
+      padding: 10px 0;
+
       p {
         margin: 0;
       }
-  
+
       #key {
         width: 100%;
-        color: lighten(#000, 50%);
+
+        color: darken(#fff, 20%);
       }
     }
   }
-  
-  .logout-btn {
-    color: #fff;
-    background: lighten(red, 16%) !important;
-  }
+}
+
+.logout-btn {
+  color: #fff;
+  background: lighten(red, 16%) !important;
+
+  border: none;
+}

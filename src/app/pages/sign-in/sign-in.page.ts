@@ -83,8 +83,9 @@ export class SignInPage implements OnInit {
         console.log(user);
 
         await this.storage.set('user', user);
+        await this.storage.set('accessToken', user.token);
 
-        this.router.navigate(['match']);
+        this.router.navigate(['matches']);
       } catch (error) {
         await this.errorToast();
       }

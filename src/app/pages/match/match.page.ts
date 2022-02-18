@@ -12,7 +12,7 @@ import {
 import { Storage } from '@ionic/storage-angular';
 
 import { io } from 'socket.io-client';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-match',
@@ -31,7 +31,7 @@ export class MatchPage implements OnInit {
 
   prevTime: number = 0;
 
-  matchId: string = '1';
+  matchId: string;
 
   isPlayer1: boolean;
 
@@ -54,6 +54,7 @@ export class MatchPage implements OnInit {
   ballYDirection = 1;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private renderer: Renderer2,
     private apiService: ApiService,
@@ -65,6 +66,9 @@ export class MatchPage implements OnInit {
 
     this.getUserData();
     this.getMatchData();
+
+    //GET MATCH ID
+    this.matchId = this.route.snapshot.paramMap.get('id');
 
     this.socket.on('playerMoved', () => this.getMatchData());
 
@@ -278,6 +282,4 @@ export class MatchPage implements OnInit {
 
     this.movePlayer(this.player1Position);
   }
-
-  move = () => console.log('MOVE');
 }

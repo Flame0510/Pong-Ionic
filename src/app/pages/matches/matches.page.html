@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Match List</ion-title>
+    <ion-icon
+      name="person"
+      slot="end"
+      (click)="router.navigate(['account'])"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container-full gradient">
+  <item-list class="matches-container" *ngIf="matches">
+    <ion-item
+      button
+      class="match"
+      (click)="goToMatch(match.id)"
+      *ngFor="let match of matches"
+    >
+      <p><span>Creator:</span> {{match.player1.username}}</p>
+    </ion-item>
+  </item-list>
+</div>
+
+<button (click)="createMatchActionSheet()" class="full-btn light">
+  Create Match
+</button>

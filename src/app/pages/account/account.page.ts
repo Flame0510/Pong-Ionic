@@ -11,6 +11,9 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class AccountPage implements OnInit {
   account: any;
+  session: any;
+
+  token: string;
 
   constructor(
     private router: Router,
@@ -26,7 +29,9 @@ export class AccountPage implements OnInit {
 
   getAccount = async () => {
     try {
-      this.account = await this.apiService.me(await this.storage.get('id'));
+      this.account = await this.apiService.me();
+      //this.session = await this.apiService.session();
+      this.token = await this.storage.get('accessToken');
 
       console.log(this.account);
     } catch (err) {
@@ -37,11 +42,11 @@ export class AccountPage implements OnInit {
 
   async logoutActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Vuoi effettuare il logout?',
+      header: 'Do you want to logout?',
       backdropDismiss: true,
       buttons: [
         {
-          text: 'Esci',
+          text: 'Yes',
           icon: 'exit',
           handler: () => {
             this.logout();
@@ -49,7 +54,7 @@ export class AccountPage implements OnInit {
         },
 
         {
-          text: 'Annulla',
+          text: 'No',
           icon: 'close',
           role: 'cancel',
           handler: () => {

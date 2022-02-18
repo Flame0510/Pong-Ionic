@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     await this.storage.create();
 
     this.router.navigate([
-      (await this.authService.checkUser()) ? 'match' : 'sign-in',
+      (await this.authService.checkUser()) ? 'matches' : 'sign-in',
     ]);
   }
 }
