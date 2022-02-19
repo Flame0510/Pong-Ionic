@@ -14,7 +14,7 @@
     <ion-item
       button
       class="match"
-      (click)="goToMatch(match.id)"
+      (click)="router.navigate(['match/' + match.id])"
       *ngFor="let match of matches"
     >
       <p><span>Creator:</span> {{match.player1.username}}</p>

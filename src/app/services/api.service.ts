@@ -28,11 +28,16 @@ export class ApiService {
 
   createMatch = () => this.http.post(`${apiLink}/matches`, {}).toPromise();
 
+  joinMatch = (id: string) =>
+    this.http.put(`${apiLink}/matches/${id}/join`, {}).toPromise();
+
   play = (matchId: string) =>
     this.http.post(`${apiLink}/matches/${matchId}/play`, {}).toPromise();
 
-  stop = (matchId: string) =>
-    this.http.post(`${apiLink}/matches/${matchId}/stop`, {}).toPromise();
+  status = (matchId: string, status: string) =>
+    this.http
+      .post(`${apiLink}/matches/${matchId}/status`, { status })
+      .toPromise();
 
   setPlayerPosition = (id: string, playerId: string, playerPosition: number) =>
     this.http

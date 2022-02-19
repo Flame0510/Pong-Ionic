@@ -6,6 +6,8 @@ import { LoadingController, ToastController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage-angular';
 import { User } from 'src/app/models/user';
+import { io } from 'socket.io-client';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,6 +15,8 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./sign-in.page.scss'],
 })
 export class SignInPage implements OnInit {
+  socket = io(environment.apiLink);
+
   form = new FormGroup({
     nickname: new FormControl(),
     password: new FormControl(),
@@ -84,6 +88,8 @@ export class SignInPage implements OnInit {
 
         await this.storage.set('user', user);
         await this.storage.set('accessToken', user.token);
+
+        this.socket.emit('login', { id: user.id, userId: user.userId });
 
         this.router.navigate(['matches']);
       } catch (error) {

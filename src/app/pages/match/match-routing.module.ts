@@ -5,7 +5,7 @@ import { MatchPage } from './match.page';
 
 const routes: Routes = [
   {
-    path: '/:id',
+    path: '',
     component: MatchPage,
   },
 ];

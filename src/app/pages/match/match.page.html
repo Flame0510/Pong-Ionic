@@ -16,20 +16,101 @@
       name="home"
       color="light"
       id="login-btn"
-      (click)="logout()"
+      (click)="router.navigate(['matches'])"
     ></ion-icon>
   </div>
 
+  <!-- PLAYGROUND -->
   <div class="playground">
     <span class="player" id="player1" #player1></span>
-    <span class="ball" #ball></span>
+    <span
+      [ngClass]="'ball' + (status === 'in_progress' ? ' opacity-1' : ' opacity-0')"
+      #ball
+    ></span>
     <span class="player" id="player2" #player2></span>
 
-    <div class="center-text">
-      <span *ngIf="userData">{{userData.username}}</span>
+    <!-- PLAYGROUND CONTENT -->
+    <div
+      class="container-full-flex-center playground-contents"
+      *ngIf="player1Data && player2Data"
+    >
+      <div class="points-container">
+        <span id="points">{{isPlayer1 ? points.player2 : points.player1}}</span>
+        <span id="username">
+          {{isPlayer1 ? player2Data.username : player1Data.username}}
+        </span>
+      </div>
+
+      <span id="line"></span>
+
+      <div class="points-container">
+        <span id="username">
+          {{isPlayer1 ? player1Data.username : player2Data.username}}
+        </span>
+        <span id="points">{{isPlayer1 ? points.player1 : points.player2}}</span>
+      </div>
+    </div>
+
+    <!-- WAIT PLAYER 2 -->
+    <div
+      *ngIf="player2WaitVisibility"
+      [ngClass]="'container-full-flex-center playground-content player-2-wait-container' + (player2WaitVisibility ? ' opacity-1' : ' opacity-0')"
+    >
+      <span id="message">In attesa di un giocatore...</span>
+    </div>
+
+    <!-- COUNTDOW BEFORE START -->
+    <div
+      *ngIf="countdownVisibility"
+      [ngClass]="'container-full-flex-center playground-content countdow-container' + (countdownVisibility ? ' opacity-1' : ' opacity-0')"
+    >
+      <span id="countdown">{{countdown}}</span>
+    </div>
+
+    <!-- DEBUG -->
+    <div class="center-text" *ngIf="false">
+      <span *ngIf="player1Data && player2Data && isPlayer1">
+        {{player1Data.username}} - {{player2Data.username}}
+      </span>
+
+      <span *ngIf="player1Data && player2Data && !isPlayer1">
+        {{player2Data.username}} - {{player1Data.username}}
+      </span>
+
+      <span>{{points.player1}} - {{points.player2}}</span>
+
       <span>X:{{ballPosition.x}} - Y: {{ballPosition.y}}</span>
       <span>1:{{player1Position}} - 2: {{player2Position}}</span>
       <span>1:{{player1ServerPosition}}</span>
+    </div>
+
+    <!-- LAST POINT -->
+    <div
+      *ngIf="lastPoint"
+      [ngClass]="'container-full-flex-center last-point-container' + (lastPointVisibility ? ' opacity-1' : ' opacity-0')"
+    >
+      <div class="last-point-message-container">
+        <span id="left"></span>
+
+        <div id="last-point-message">
+          <h1>Punto di</h1>
+          <h1 id="username">{{lastPoint.username}}</h1>
+        </div>
+
+        <span id="right"></span>
+      </div>
+
+      <div class="points-container">
+        <p id="usernames">
+          {{isPlayer1 ? player1Data.username : player2Data.username}} -
+          {{isPlayer1 ? player2Data.username : player1Data.username}}
+        </p>
+
+        <p id="points">
+          {{isPlayer1 ? points.player1 : points.player2}} - {{isPlayer1 ?
+          points.player2 : points.player1}}
+        </p>
+      </div>
     </div>
   </div>
 </div>

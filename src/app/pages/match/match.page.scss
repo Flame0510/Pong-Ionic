@@ -28,9 +28,12 @@
     }
   }
 
+  //PLAYGROUND
   .playground {
     width: 300px;
     height: 500px;
+
+    background: linear-gradient(lighten(red, 20%), lighten(blue, 20%));
 
     border: 2px solid #fff;
     border-radius: 6px;
@@ -44,11 +47,14 @@
       transition: 0.1s;
 
       background: #fff;
+
+      z-index: 10;
     }
 
     #player1 {
       position: absolute;
       bottom: 20px;
+      left: 100px;
 
       //animation: player1 3s infinite;
     }
@@ -56,7 +62,7 @@
     #player2 {
       position: absolute;
       top: 20px;
-      left: 50px;
+      left: 100px;
 
       //animation: player2 3s infinite;
     }
@@ -72,57 +78,8 @@
       transition: 0.1s;
 
       position: absolute;
-      top: 200px;
-      left: 200px;
 
       //animation: ball 3s infinite;
-    }
-
-    @keyframes player1 {
-      0% {
-        left: 20px;
-      }
-      50% {
-        left: calc(100% - 120px);
-      }
-      100% {
-        left: 20px;
-      }
-    }
-
-    @keyframes player2 {
-      0% {
-        left: calc(100% - 120px);
-      }
-      50% {
-        left: 20px;
-      }
-      100% {
-        left: calc(100% - 120px);
-      }
-    }
-
-    @keyframes ball {
-      0% {
-        top: 50px;
-        left: 50px;
-      }
-      25% {
-        top: calc(100% - 50px);
-        left: calc(100% - 100px);
-      }
-      50% {
-        top: calc(100% - 200px);
-        left: calc(100% - 20px);
-      }
-      75% {
-        top: calc(100% - 400px);
-        left: calc(100% - 50px);
-      }
-      100% {
-        top: 50px;
-        left: 50px;
-      }
     }
 
     .move-btn-container {
@@ -133,6 +90,28 @@
       }
     }
 
+    //PLAYER 2 WAIT
+    .player-2-wait-container {
+      #message {
+        width: 80%;
+
+        text-align: center;
+        font-size: 26px;
+
+        padding: 10px;
+
+        border-radius: 6px;
+      }
+    }
+
+    //COUNTDOWN
+    .countdow-container {
+      #countdown {
+        font-size: 64px;
+      }
+    }
+
+    //DEBUG
     .center-text {
       display: flex;
       justify-content: center;
@@ -146,11 +125,169 @@
       top: 0;
       left: 0;
 
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
       span {
         display: block;
 
         font-size: 36px;
         color: #fff;
+      }
+    }
+
+    //PLAYGROUND CONTENTS
+    .playground-contents {
+      position: absolute;
+
+      .points-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 46%;
+
+        color: #fff;
+
+        text-align: center;
+
+        #points {
+          transition: 0.5s;
+          font-size: 64px;
+        }
+
+        #username {
+          margin: 0 20px;
+        }
+      }
+
+      #line {
+        display: block;
+        width: 100%;
+        height: 2px;
+
+        background: #fff;
+      }
+    }
+
+    //LAST POINT
+    .last-point-container {
+      background: #fff;
+
+      transition: 0.5s;
+
+      border-radius: 6px;
+
+      .last-point-message-container {
+        width: 100%;
+
+        position: relative;
+
+        #last-point-message {
+          display: flex;
+          justify-content: center;
+
+          width: 100%;
+          margin: 10px 0;
+
+          color: lightblue;
+          background: #fff;
+
+          text-align: center;
+
+          padding: 10px;
+
+          border-radius: 6px;
+
+          z-index: 100;
+
+          #username {
+            margin-left: 8px;
+
+            color: red;
+          }
+        }
+
+        span {
+          display: block;
+
+          width: 100px;
+          height: 5px;
+
+          position: absolute;
+
+          transition: 1s;
+        }
+
+        #left {
+          left: 0;
+          top: 0;
+
+          background: lightblue;
+
+          animation: lastPointbackgroundItemLeft 2s infinite;
+        }
+
+        #right {
+          right: 0;
+          bottom: 0;
+
+          background: red;
+
+          animation: lastPointbackgroundItemRight 2s infinite;
+        }
+
+        @keyframes lastPointbackgroundItemLeft {
+          0% {
+            left: 0;
+          }
+
+          50% {
+            left: 200px;
+          }
+
+          100% {
+            left: 0;
+          }
+        }
+
+        @keyframes lastPointbackgroundItemRight {
+          0% {
+            right: 0;
+          }
+
+          50% {
+            right: 200px;
+          }
+
+          100% {
+            right: 0;
+          }
+        }
+      }
+
+      .points-container {
+        margin-top: 40px;
+
+        p {
+          margin: 0;
+          text-align: center;
+        }
+
+        #usernames {
+          margin-bottom: 10px;
+
+          color: gray;
+        }
+
+        #points {
+          color: red;
+        }
       }
     }
   }
