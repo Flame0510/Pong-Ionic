@@ -67,6 +67,16 @@
       <span id="countdown">{{countdown}}</span>
     </div>
 
+
+    <!-- GAME OVER -->
+    <div
+      *ngIf="gameOverVisibility"
+      [ngClass]="'container-full-flex-center playground-content game-over-container' +( gameOverVisibility ? ' opacity-1' : ' opacity-0')"
+    >
+      <span id="game-over">{{isWinner ? 'Hai vinto !' : 'Hai Perso!'}}</span>
+      <button id="home-btn" (click)="router.navigate(['matches'])">Torna alla Home</button>
+    </div>
+
     <!-- DEBUG -->
     <div class="center-text" *ngIf="false">
       <span *ngIf="player1Data && player2Data && isPlayer1">

@@ -75,7 +75,7 @@
 
       border-radius: 50%;
 
-      transition: 0.1s;
+      //transition: 0.1s;
 
       position: absolute;
 
@@ -108,6 +108,26 @@
     .countdow-container {
       #countdown {
         font-size: 64px;
+      }
+    }
+
+    //GAME OVER
+    .game-over-container {
+      z-index: 1;
+
+      #game-over {
+        font-size: 32px;
+      }
+
+      #home-btn {
+        margin-top: 10px;
+
+        color: #000;
+        background: #fff;
+
+        padding: 10px;
+
+        border-radius: 6px;
       }
     }
 

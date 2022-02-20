@@ -14,6 +14,11 @@ export class ApiService {
   login = (username: string, password: string) =>
     this.http.post(`${apiLink}/auth/login`, { username, password }).toPromise();
 
+  signUp = (username: string, password: string) =>
+    this.http
+      .post(`${apiLink}/auth/sign-up`, { username, password })
+      .toPromise();
+
   me = () => this.http.get(`${apiLink}/auth/me`).toPromise();
 
   session = () => this.http.get(`${apiLink}/auth/session`).toPromise();

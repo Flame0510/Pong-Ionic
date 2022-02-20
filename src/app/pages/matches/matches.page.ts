@@ -38,7 +38,7 @@ export class MatchesPage implements OnInit {
 
   async createMatchActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Do you want create a snew match?',
+      header: 'Do you want create a new match?',
       buttons: [
         {
           text: 'Yes',
@@ -58,7 +58,12 @@ export class MatchesPage implements OnInit {
 
   getMatches = async () => {
     try {
-      this.matches = (await this.apiService.getMatches()) as Match[];
+      this.matches = ((await this.apiService.getMatches()) as Match[]).filter(
+        ({ player1, player2, status }) =>
+          player1.id !== this.userData.userId &&
+          player2 === null &&
+          status === 'pre_start'
+      );
     } catch (error) {
       console.log(error);
     }

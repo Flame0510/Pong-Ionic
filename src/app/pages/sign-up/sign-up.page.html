@@ -1,18 +1,18 @@
 <div class="container-full-flex-center gradient">
-  <h2 id="title">PONG</h2>
-  <form [formGroup]="form" (ngSubmit)="signIn()">
+  <h2>PONG - Registrati</h2>
+  <form [formGroup]="form" (ngSubmit)="signUp()">
     <input formControlName="username" placeholder="Username" required />
     <input formControlName="password" placeholder="Password" required />
-    <button type="submit" class="light full-btn radius">Accedi</button>
+    <button type="submit" class="light full-btn radius">Registrati</button>
   </form>
 
   <div class="sign-in-up-page-switch-container">
-    <h3 id="title">Non hai un account?</h3>
+    <h3>Hai già un account?</h3>
     <button
       class="light full-btn radius"
-      (click)="router.navigate(['sign-up'])"
+      (click)="router.navigate(['sign-in'])"
     >
-      Registrati
+      Accedi
     </button>
   </div>
 </div>

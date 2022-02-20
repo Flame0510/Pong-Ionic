@@ -40,6 +40,10 @@ export class MatchPage implements OnInit {
   countdown: number;
   countdownVisibility: boolean = false;
 
+  gameOverVisibility: boolean = false;
+
+  isWinner: boolean;
+
   matchId: string;
 
   status: string = 'pre_start';
@@ -102,6 +106,22 @@ export class MatchPage implements OnInit {
       this.startCountdown();
     });
 
+    this.socket.on(
+      'player-1-win',
+      () => (
+        (this.isWinner = this.isPlayer1 ? true : false),
+        (this.gameOverVisibility = true)
+      )
+    );
+
+    this.socket.on(
+      'player-2-win',
+      () => (
+        (this.isWinner = this.isPlayer1 ? false : true),
+        (this.gameOverVisibility = true)
+      )
+    );
+
     this.socket.on('playerMoved', () => this.getMatchData());
 
     this.socket.on('point', (player) => {
@@ -132,10 +152,13 @@ export class MatchPage implements OnInit {
     });
 
     setInterval(() => {
-      //console.log(this.status);
+      console.log(this.status);
 
-      this.status === 'in_progress' && this.getMatchData();
-      this.status === 'in_progress' && this.setPositions();
+      //this.status === 'in_progress' && this.getMatchData();
+      //this.status === 'in_progress' && this.setPositions();
+
+      this.getMatchData();
+      this.setPositions();
     }, 100);
 
     setInterval(() => {
@@ -193,7 +216,7 @@ export class MatchPage implements OnInit {
 
     this.renderer.setStyle(this.ball.nativeElement, 'transition', `0`);
 
-    this.pause();
+    //this.pause();
 
     setTimeout(() => {
       this.lastPointVisibility = false;
@@ -292,7 +315,8 @@ export class MatchPage implements OnInit {
           this.ballXDirection = ballXDirection;
           this.ballYDirection = ballYDirection;
         } else {
-          this.player2Position = player1Position;
+          this.player2Position =
+            this.windowWidth - player1Position - this.playerWidth;
           this.ballPosition = {
             x: this.windowWidth - ballPosition.x - 20,
             y: this.windowHeight - ballPosition.y - 20,

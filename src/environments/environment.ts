@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiLink: `http://192.168.1.82:3000`,
-  apiLink: `https://pong-express-server.herokuapp.com`,
+  apiLink: `http://192.168.1.82:3000`,
+  //apiLink: `https://pong-express-server.herokuapp.com`,
 };
 
 /*
