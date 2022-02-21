@@ -9,8 +9,8 @@
   </ion-toolbar>
 </ion-header>
 
-<div class="container-full gradient">
-  <item-list class="matches-container" *ngIf="matches">
+<div class="container-full gradient" *ngIf="matches && matches.length > 0">
+  <item-list class="matches-container">
     <ion-item
       button
       class="match"
@@ -20,6 +20,13 @@
       <p><span>Creator:</span> {{match.player1.username}}</p>
     </ion-item>
   </item-list>
+</div>
+
+<div
+  class="container-full-flex-center gradient not-fount-matches-container"
+  *ngIf="matches && matches.length === 0"
+>
+  <h2 id="not-fount-matches-message">NON CI SONO MATCH IN CUI UNIRTI</h2>
 </div>
 
 <button (click)="createMatchActionSheet()" class="full-btn light">

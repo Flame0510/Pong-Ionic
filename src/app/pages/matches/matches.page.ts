@@ -64,6 +64,8 @@ export class MatchesPage implements OnInit {
           player2 === null &&
           status === 'pre_start'
       );
+
+      console.log(this.matches.length);
     } catch (error) {
       console.log(error);
     }
